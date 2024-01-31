@@ -1,3 +1,5 @@
+<!-- https://mc-yfyyj2sjhsjhkwc1s8w4zrxx4.pub.sfmc-content.com/4riylizrw0l?f=sab-create-de-fields.html&t=a1c7-2604-3d08-597c-9190-dcbc-a6f1-78e8-1cfc.ngrok-free.app -->
+
 <script runat="server">
     Platform.Load("core","1.1.5");  
 try { 
@@ -120,7 +122,7 @@ try {
             for(var i = 1; i< rows.length ; i++) { //exclude first tow
                 var cols = rows[0].split(','); // first row is header 
                 var data = rows[i].split(','); // data row 
-                Write('<br><br> Row ' + Stringify(cols) + ' Data ' + Stringify(data));
+                // Write('<br><br> Row ' + Stringify(cols) + ' Data ' + Stringify(data));
                 if(data.length > 1) { 
                     var addedRowCount = Platform.Function.InsertData(
                         deName,
@@ -234,7 +236,7 @@ try {
         Write('<br><br> folderId : ' + Stringify(folderId))
         for(var child in childFolderNames) {
             Write('<br><br> Creating folder for ' +  childFolderNames[child])
-            var childFolderCreationStatus = createFolder(ParentFolderID, childFolderNames[child]);
+            var childFolderCreationStatus = createFolder(folderId, childFolderNames[child]);
             Write('<br><br> childFolderCreationStatus ' + Stringify(childFolderCreationStatus));
         }
 
@@ -286,6 +288,11 @@ try {
             var deInsertStatus = insertCsvToDE(url, deName);
             Write('<br><br> deInsertStatus from url ' + url +  ' : ' + Stringify(deInsertStatus))
         }
-    }    
+    }
+    
+
+    // var url = 'https://raw.githubusercontent.com/sabuhiy/mc30/main/sql30/sql30_01_users.csv';
+    // insertCsvToDE(url, deStructure['sql30_01_users']['Name']);
+    
 }catch(e) { Write('<br><br><br><br><br><br><b> ERROR : ' + Stringify(e)); }
 </script>
